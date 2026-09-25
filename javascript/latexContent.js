@@ -45,7 +45,9 @@ const lstLanguageDefinition =
 }`;
 
 // Ukrainian: Cyrillic needs the T2A font encoding and a Cyrillic-capable
-// Times-like family (tempora); babel's ukrainian (listed last, hence the
+// Times-like family, Tempora. It is selected by family name rather than with
+// \usepackage{tempora}, which also loads the Greek and other encodings that
+// minimal TeX installs (CI) lack. babel's ukrainian (listed last, hence the
 // main language) supplies the localized chapter/contents/figure names and hyphenation.
 const isUkrainian = edition.locale === "uk";
 const fontEncodings = isUkrainian ? "[T2A,T1]" : "[T1]";
@@ -106,9 +108,9 @@ export const preamble = `\\documentclass[nocrop,7x10]{../mitpress/mit}
 ${isUkrainian ? "\\usepackage{cmap}\n" : ""}\\usepackage${fontEncodings}{fontenc}
 \\usepackage{textcomp}
 \\usepackage[utf8]{inputenc}
-\\usepackage{mathptmx}${isUkrainian ? "\n\\usepackage{tempora}" : ""}
+\\usepackage{mathptmx}${isUkrainian ? "\n\\renewcommand*{\\rmdefault}{Tempora-TLF}\\renewcommand*{\\familydefault}{\\rmdefault}" : ""}
 %% \\usepackage[bf,big,raggedright,nobottomtitles]{titlesec}
-${isUkrainian ? "\\def\\cyrillicencoding{T2A} % tempora also loads T2B, which lacks \\cyrie/\\cyryi; babel would pick it\n" : ""}\\usepackage[${babelLanguages}]{babel}
+${isUkrainian ? "\\def\\cyrillicencoding{T2A} % be explicit: babel takes the last loaded Cyrillic encoding, and T2B lacks \\cyrie/\\cyryi\n" : ""}\\usepackage[${babelLanguages}]{babel}
 \\usepackage[multidot]{grffile}
 
 \\ifxetex
