@@ -420,11 +420,12 @@ def add_terms(L1, L2):
                                            rest_terms(L2))))
       </PYTHON>
     </SNIPPET>
-    Найважливіше тут те, що ми скористалися узагальненою процедурою
+    Найважливіше тут те, що ми скористалися узагальненою
     <SPLITINLINE>
-      <SCHEME>додавання</SCHEME>
-      <PYTHON>додавання</PYTHON>
+      <SCHEME>процедурою</SCHEME>
+      <PYTHON>функцією</PYTHON>
     </SPLITINLINE>
+    додавання
      <INDEX><USE>add</USE> (узагальнена)<SUBINDEX>використовується для коефіцієнтів многочленів</SUBINDEX></INDEX>
     <SCHEMEINLINE>add</SCHEMEINLINE> щоб додати коефіцієнти
     членів, які комбінуються. Це має потужні наслідки, як ми побачимо нижче.
@@ -514,11 +515,12 @@ def mul_term_by_all_terms(t1, L):
     </LATEX>
   </TEXT>
   <TEXT>
-    Оскільки ми встановили процедури додавання та множення многочленів
+    Оскільки ми встановили
     <SPLITINLINE>
-      <SCHEME></SCHEME>
-      <PYTHON></PYTHON>
+      <SCHEME>процедури</SCHEME>
+      <PYTHON>функції</PYTHON>
     </SPLITINLINE>
+    додавання та множення многочленів
     <SPLITINLINE>
       <SCHEME><SCHEMEINLINE>add-poly</SCHEMEINLINE></SCHEME>
     <PYTHON><PYTHONINLINE>add_@poly</PYTHONINLINE></PYTHON>

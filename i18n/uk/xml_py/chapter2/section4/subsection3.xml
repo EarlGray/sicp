@@ -385,7 +385,7 @@ def install_rectangular_package():
       <PYTHON>функції</PYTHON>
     </SPLITINLINE>
     з підрозділу<SPACE/><REF NAME="sec:representations-complex-numbers"/>, які
-    Бен написав, працюючи на самот’і.  Жодних змін не потрібно,
+    Бен написав, працюючи на самоті.  Жодних змін не потрібно,
     щоб сполучити їх з рештою системи.  Більше того, оскільки ці
     <SPLITINLINE>
       <SCHEME>означення процедур</SCHEME>

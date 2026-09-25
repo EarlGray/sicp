@@ -176,13 +176,13 @@ def equal_rat(x, y):
   </SUBHEADING>
 
   <TEXT>
-    Щоб дати нам змогу реалізувати конкретний рівень нашої абстракції даних, наша
+    Щоб дати нам змогу реалізувати конкретний рівень нашої абстракції даних,
     <SPLITINLINE>
       <SCHEME>
-	мова
+	наша мова
       </SCHEME>
       <PYTHON>
-	Python-середовище
+	наше Python-середовище
       </PYTHON>
     </SPLITINLINE>
     надає складену структуру, яку називають 
@@ -605,8 +605,8 @@ print(print_rat(one_half))
     </SNIPPET>
     Тепер ми можемо спробувати наші
     <SPLITINLINE>
-      <SCHEME>процедури:</SCHEME>
-      <PYTHON>функції:</PYTHON>
+      <SCHEME>процедури</SCHEME>
+      <PYTHON>функції</PYTHON>
     </SPLITINLINE>
     для раціональних чисел:
     <SNIPPET PAGE="86">

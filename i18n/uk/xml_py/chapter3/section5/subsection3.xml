@@ -501,9 +501,9 @@ print(stream_ref(accelerated_sequence(euler_transform, pi_stream),
                            (sqrt-stream x))))
 	  </SCHEME>
 	</SNIPPET>
-	Аліса П. Хакер відповідає, що ця версія процедури
+	Алісса П. Гакер відповідає, що ця версія процедури
 	істотно менш ефективна, бо виконує надлишкові обчислення.
-	Поясніть відповідь Аліси. Чи відрізнялися б дві версії за
+	Поясніть відповідь Алісси. Чи відрізнялися б дві версії за
 	ефективністю, якби наша реалізація <SCHEMEINLINE>delay</SCHEMEINLINE>
 	використовувала лише <SCHEMEINLINE>(lambda () exp)</SCHEMEINLINE>
 	без оптимізації, яку дає
@@ -526,7 +526,7 @@ def sqrt_stream_optimized(x):
                                         sqrt_stream_optimized(x))))
 	  </PYTHON>
 	</SNIPPET>
-	Аліса П. Хакер натомість пропонує
+	Алісса П. Гакер натомість пропонує
 	<SNIPPET EVAL="no">
 	  <REQUIRES>stream_functions</REQUIRES>
 	  <REQUIRES>memo</REQUIRES>
@@ -541,8 +541,8 @@ def sqrt_stream_optimized_2(x):
 	</SNIPPET>
         і стверджує, що версія Луї
 	істотно менш ефективна, ніж її, бо вона виконує
-	надлишкові обчислення. Поясніть відповідь Аліси.
-	Чи був би підхід Аліси без запам’ятовування ефективнішим
+	надлишкові обчислення. Поясніть відповідь Алісси.
+	Чи був би підхід Алісси без запам’ятовування ефективнішим
 	за початковий <SCHEMEINLINE>sqrt_stream</SCHEMEINLINE>?
       </PYTHON>
     </SPLIT>
@@ -785,11 +785,12 @@ def pairs(s, t):
     ми мусимо вибрати якийсь спосіб
     <INDEX>нескінченний потік(и)<SUBINDEX>злиття</SUBINDEX></INDEX>
     поєднати два внутрішні потоки. Одна ідея — скористатися
-    потоковим аналогом процедури <SCHEMEINLINE>append</SCHEMEINLINE>
+    потоковим аналогом
     <SPLITINLINE>
-      <SCHEME>з</SCHEME>
-      <PYTHON>з</PYTHON>
+      <SCHEME>процедури</SCHEME>
+      <PYTHON>функції</PYTHON>
     </SPLITINLINE>
+    <SCHEMEINLINE>append</SCHEMEINLINE> з
     підрозділу<SPACE/><REF NAME="sec:sequences"/>:
     <SNIPPET HIDE="yes">
       <NAME>stream_append_example</NAME>
@@ -993,11 +994,12 @@ print(stream_ref(pairs(integers, integers), 8))
   </EXERCISE>
 
   <EXERCISE>
-    Змініть процедуру <SCHEMEINLINE>pairs</SCHEMEINLINE>
+    Змініть
     <SPLITINLINE>
-      <SCHEME>так,</SCHEME>
-      <PYTHON>так,</PYTHON>
+      <SCHEME>процедуру</SCHEME>
+      <PYTHON>функцію</PYTHON>
     </SPLITINLINE>
+    <SCHEMEINLINE>pairs</SCHEMEINLINE> так,
     щоб
     <SPLITINLINE>
       <SCHEME><SCHEMEINLINE>(pairs integers integers)</SCHEMEINLINE></SCHEME>
@@ -1070,11 +1072,12 @@ def pairs(s, t):
     потоки, у яких пари
     з’являються в якомусь корисному порядку, а не в порядку,
     що виникає з <EM>ad hoc</EM> процесу переплетення. Ми можемо скористатися технікою,
-    подібною до процедури <SCHEMEINLINE>merge</SCHEMEINLINE>
+    подібною до
     <SPLITINLINE>
-      <SCHEME>з</SCHEME>
-      <PYTHON>з</PYTHON>
+      <SCHEME>процедури</SCHEME>
+      <PYTHON>функції</PYTHON>
     </SPLITINLINE>
+    <SCHEMEINLINE>merge</SCHEMEINLINE> з
     вправи<SPACE/><REF NAME="ex:merge"/>, якщо означимо спосіб сказати, що
     одна пара цілих чисел <QUOTE>менша</QUOTE> за іншу. Один спосіб зробити
     це — означити
@@ -1380,7 +1383,7 @@ def integral(integrand, initial_value, dt):
   </EXERCISE>
 
   <EXERCISE>
-    Аліса П. Хакер проєктує систему для опрацювання сигналів, що надходять від
+    Алісса П. Гакер проєктує систему для опрацювання сигналів, що надходять від
     фізичних давачів. Одна важлива властивість, яку вона хоче отримати, — це сигнал,
     який описує
     <INDEX>опрацювання сигналів<SUBINDEX>переходи сигналу через нуль</SUBINDEX></INDEX>
@@ -1403,7 +1406,7 @@ $\ldots\;$  0  0    0  0    0     -1  0   0   0     0    1  0  0 $\ldots$
       </PYTHON>
     </SNIPPET>
 
-    У системі Аліси сигнал від давача представлено як
+    У системі Алісси сигнал від давача представлено як
     потік
     <SPLITINLINE>
       <SCHEME><SCHEMEINLINE>sense-data</SCHEMEINLINE></SCHEME>
@@ -1415,7 +1418,7 @@ $\ldots\;$  0  0    0  0    0     -1  0   0   0     0    1  0  0 $\ldots$
       <PYTHON><PYTHONINLINE>zero_crossings</PYTHONINLINE>
       </PYTHON>
     </SPLITINLINE>
-    — це відповідний потік переходів через нуль. Аліса спершу пише
+    — це відповідний потік переходів через нуль. Алісса спершу пише
     <SPLITINLINE>
       <SCHEME>процедуру</SCHEME>
       <PYTHON>функцію</PYTHON>
@@ -1451,7 +1454,7 @@ zero_crossings = make_zero_crossings(sense_data, 0)
       </PYTHON>
     </SNIPPET>
 
-    Начальниця Аліси, Єва Лу Атор, проходить повз і припускає, що ця програма
+    Начальниця Алісси, Єва Лу Атор, проходить повз і припускає, що ця програма
     приблизно еквівалентна такій, яка використовує
     <SPLITINLINE>
       <SCHEME>
@@ -1482,7 +1485,7 @@ zero_crossings = stream_map_2(sign_change_detector,
   </EXERCISE>
 
   <EXERCISE>
-    На жаль, детектор переходів через нуль Аліси
+    На жаль, детектор переходів через нуль Алісси
     <INDEX>опрацювання сигналів<SUBINDEX>переходи сигналу через нуль</SUBINDEX></INDEX>
     <INDEX>переходи сигналу через нуль</INDEX>
     <INDEX>опрацювання сигналів<SUBINDEX>згладжування сигналу</SUBINDEX></INDEX>
@@ -1490,12 +1493,12 @@ zero_crossings = stream_map_2(sign_change_detector,
     з
     вправи<SPACE/><REF NAME="ex:zero-crossing"/> виявляється недостатнім,
     бо зашумлений сигнал від давача спричиняє хибні переходи через нуль.
-    Лем Е. Твікіт, фахівець із апаратного забезпечення, радить Алісі згладити
+    Лем Е. Твікіт, фахівець із апаратного забезпечення, радить Аліссі згладити
     сигнал, щоб відфільтрувати шум, перш ніж видобувати переходи через нуль.
-    Аліса слухає його пораду й вирішує видобувати переходи через нуль
+    Алісса слухає його пораду й вирішує видобувати переходи через нуль
     із сигналу, побудованого усередненням кожного значення даних давача з
     попереднім значенням. Вона пояснює задачу своєму помічникові, Луї
-    Різонеру, який намагається реалізувати цю ідею, змінивши програму Аліси
+    Різонеру, який намагається реалізувати цю ідею, змінивши програму Алісси
     так:
     <SNIPPET EVAL="no">
       <REQUIRES>stream_tail</REQUIRES>
@@ -1514,7 +1517,7 @@ def make_zero_crossings(input_stream, last_value):
                                             avpt))
       </PYTHON>
     </SNIPPET>
-    Це не реалізує план Аліси правильно.
+    Це не реалізує план Алісси правильно.
     Знайдіть ваду, яку вніс Луї,
     і виправте її, не змінюючи структури програми. (Підказка: вам
     треба буде збільшити кількість аргументів
@@ -1549,7 +1552,7 @@ def make_zero_crossings(input_stream, last_value):
     Програма, яку він написав,
     не модульна, бо вона змішує операцію згладжування з
     видобуванням переходів через нуль. Наприклад, видобувач не мав би
-    потребувати змін, якби Аліса знайшла кращий спосіб підготувати свій вхідний
+    потребувати змін, якби Алісса знайшла кращий спосіб підготувати свій вхідний
     сигнал. Допоможіть Луї, написавши
     <SPLITINLINE>
       <SCHEME>процедуру</SCHEME>

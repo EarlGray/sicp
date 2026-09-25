@@ -18,8 +18,8 @@
 - `$math$` and `LATEX`/`LATEXINLINE`.
 - `REFERENCE` (bibliography) entries. `CITATION` text stays as printed in the bibliography
   ("Stoy 1977").
-- Proper names of people in prose are transliterated and declined (Абельсон, Суссман, Алісса П. Гакер, Луїс Різонер,
-  Єва Лу Атор, Бен Бітдідл), always the same way; the names of the book's recurring characters are
+- Proper names of people in prose are transliterated and declined (Абельсон, Суссман, Алісса П. Гакер (Алісси, Аліссі), Луї Різонер
+  (indeclinable), Єва Лу Атор, Бен Бітдідл, Лем Е. Твікіт, Гендерсон), always the same way; the names of the book's recurring characters are
   fixed here. Authors cited in references keep the original spelling (Sagade 2015). Titles of books and papers stay in the original.
 
 ## What gets translated

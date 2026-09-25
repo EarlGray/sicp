@@ -166,9 +166,8 @@ print(withdraw(15))
       <PYTHON>функцію</PYTHON>
     </SPLITINLINE>
     , яка звертається до <SCHEMEINLINE>balance</SCHEMEINLINE>.
-    Процедура
     <SPLITINLINE>
-      <SCHEME/><PYTHON>Функція </PYTHON>
+      <SCHEME>Процедура</SCHEME><PYTHON>Функція</PYTHON>
     </SPLITINLINE>
     <SCHEMEINLINE>withdraw</SCHEMEINLINE>
     перевіряє, чи <SCHEMEINLINE>balance</SCHEMEINLINE> не менший
@@ -458,7 +457,7 @@ new_withdraw = make_withdraw_balance_100()
     </SNIPPET>
     <SPLIT>
       <SCHEME>
-        Те, що ми тут зробили, — це використали <SCHEMEINLINE>let</SCHEMEINLINE>, щоб
+        Тут ми використали <SCHEMEINLINE>let</SCHEMEINLINE>, щоб
 	встановити середовище з локальною змінною
 	<SCHEMEINLINE>balance</SCHEMEINLINE>, зв’язаною з початковим значенням 100.
         У цьому локальному середовищі ми використовуємо
@@ -488,7 +487,7 @@ new_withdraw = make_withdraw_balance_100()
 	<QUOTE>потребу знати</QUOTE>.</FOOTNOTE>
       </SCHEME>
       <PYTHON>
-        Те, що ми тут зробили, — це використали оголошувальне присвоєння,
+        Тут ми використали оголошувальне присвоєння,
 	щоб встановити середовище з локальною змінною
 	<PYTHONINLINE>balance</PYTHONINLINE>, зв’язаною з початковим
 	значенням 100. У цьому локальному середовищі ми використовуємо

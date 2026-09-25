@@ -141,12 +141,11 @@ print(put("add", llist("complex", "python_number"),
   <TEXT>
     Загалом цю ідею можна реалізувати, спроєктувавши
     <INDEX>зведення<SUBINDEX><SPLITINLINE><SCHEME>процедуру</SCHEME><PYTHON>функцію</PYTHON></SPLITINLINE></SUBINDEX></INDEX>
-    процедури зведення
     <SPLITINLINE>
       <SCHEME>процедури</SCHEME>
       <PYTHON>функції</PYTHON>
     </SPLITINLINE>
-    які перетворюють об’єкт одного типу на еквівалентний
+    зведення, які перетворюють об’єкт одного типу на еквівалентний
     об’єкт іншого типу.  Ось типова
     <SPLITINLINE>
       <SCHEME>процедура,</SCHEME>
@@ -978,7 +977,8 @@ put_coercion("complex", "complex", complex_to_complex)
 
     <OL>
       <LI>
-        Коли Луї з’єднав свої<SPLITINLINE>
+        Коли Луї з’єднав свої
+        <SPLITINLINE>
 	  <SCHEME>процедури</SCHEME>
 	  <PYTHON>функції</PYTHON>
 	</SPLITINLINE>

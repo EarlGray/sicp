@@ -996,7 +996,7 @@ def expmod(base, exp, m):
 
   <EXERCISE>
     <LABEL NAME="ex:louis-fast-prime"/>
-    Луїс Різонер зазнає великих труднощів, виконуючи
+    Луї Різонер зазнає великих труднощів, виконуючи
     вправу<SPACE/><REF NAME="ex:mod-timed-prime-test"/>.
     Його перевірка
     <SPLITINLINE>
@@ -1016,8 +1016,8 @@ def expmod(base, exp, m):
         <PYTHONINLINE>is_prime</PYTHONINLINE> 
       </PYTHON>
     </SPLITINLINE>
-    . Луїс кличе на допомогу свою подругу Єву Лу Атор.  Коли вони розглядають
-    код Луїса, то виявляють, що він переписав
+    . Луї кличе на допомогу свою подругу Єву Лу Атор.  Коли вони розглядають
+    код Луї, то виявляють, що він переписав
     <SCHEMEINLINE>expmod</SCHEMEINLINE> 
     <SPLITINLINE>
       <SCHEME>процедуру</SCHEME>
@@ -1051,7 +1051,7 @@ def expmod(base, exp, m):
       </PYTHON>
     </SNIPPET>
     <QUOTE>Не бачу, яка від цього могла б бути різниця,</QUOTE>
-    каже Луїс. <QUOTE>А я бачу.</QUOTE>  каже Єва. <QUOTE>Написавши
+    каже Луї. <QUOTE>А я бачу.</QUOTE>  каже Єва. <QUOTE>Написавши
     <SPLITINLINE>
       <SCHEME>процедуру</SCHEME>
       <PYTHON>функцію</PYTHON>
@@ -1196,8 +1196,8 @@ print(carmichael(561))
     Перевірте свою
     <SPLITINLINE>
       <SCHEME>процедуру</SCHEME>
-    <PYTHON>функцію</PYTHON></SPLITINLINE> 
-    Щоб з’ясувати, чи все гаразд, перевірте свою процедуру на різних відомих простих і не простих числах. Підказка: один зручний спосіб
+    <PYTHON>функцію</PYTHON></SPLITINLINE>
+    на різних відомих простих і не простих числах. Підказка: один зручний спосіб
     змусити <SCHEMEINLINE>expmod</SCHEMEINLINE> сигналізувати — це повертати<SPACE/>0.
     <LABEL NAME="ex:miller-rabin"/>
     <SOLUTION>

@@ -197,6 +197,66 @@ const mathSegments = (texts: string[]): string[] =>
 
 const CYRILLIC = /[Ѐ-ӿ]/;
 
+// ---- checks for the two ways the Scheme and target-language branches get mixed up
+
+const textOf = (node: XNode): string => {
+  let out = "";
+  for (let i = 0; i < node.childNodes.length; i++) {
+    const c = node.childNodes[i] as XNode;
+    if (c.nodeType === 1) out += textOf(c);
+    else if (c.nodeType === 3 || c.nodeType === 4) out += c.nodeValue ?? "";
+  }
+  return out;
+};
+
+// Branches (SCHEME / PYTHON / ...) of every <SPLITINLINE>, in document order.
+function splitBranches(
+  node: XNode,
+  out: Map<string, string>[] = []
+): Map<string, string>[] {
+  for (let i = 0; i < node.childNodes.length; i++) {
+    const c = node.childNodes[i] as XNode;
+    if (c.nodeType !== 1) continue;
+    if (c.nodeName === "SPLITINLINE") {
+      const m = new Map<string, string>();
+      for (let j = 0; j < c.childNodes.length; j++) {
+        const b = c.childNodes[j] as XNode;
+        if (b.nodeType === 1)
+          m.set(b.nodeName, textOf(b).replace(/\s+/g, " ").trim());
+      }
+      out.push(m);
+    }
+    splitBranches(c, out);
+  }
+  return out;
+}
+
+// Prose a reader of the target-language edition sees: everything except the
+// Scheme branches, editor comments and protected (code) regions.
+function visibleText(node: XNode, out: string[] = []): string[] {
+  for (let i = 0; i < node.childNodes.length; i++) {
+    const c = node.childNodes[i] as XNode;
+    if (c.nodeType === 1) {
+      if (
+        c.nodeName === "SCHEME" ||
+        c.nodeName === "COMMENT" ||
+        PROTECTED.has(c.nodeName)
+      )
+        continue;
+      visibleText(c, out);
+    } else if (c.nodeType === 3 || c.nodeType === 4)
+      out.push(c.nodeValue ?? "");
+  }
+  return out;
+}
+
+// A Scheme-only word that must not survive in text shown in the target
+// edition: English source term -> its translation. "procedure" is Scheme's
+// word; the Python/JavaScript editions say "function".
+const leakTerms: Record<string, { src: RegExp; dst: RegExp; label: string }> = {
+  uk: { src: /procedur|routine/gi, dst: /процедур/gi, label: "процедур-" }
+};
+
 type CheckResult = { errors: string[]; warnings: string[] };
 
 function checkFile(lang: string, rel: string): CheckResult {
@@ -252,6 +312,34 @@ function checkFile(lang: string, rel: string): CheckResult {
         `markup order differs from source at token ${i} (source ${preview(a[i] ?? "end")} / translation ${preview(b[i] ?? "end")}); fine if inline markup moved for word order`
       );
     }
+  }
+
+  // 2b. a translation may not empty a branch the source fills (the word then
+  //     lives in the shared text and shows up in every edition), nor leak the
+  //     Scheme term into the target-language text
+  const sb = splitBranches(src.root);
+  const db = splitBranches(dst.root);
+  if (sb.length === db.length) {
+    sb.forEach((m, i) => {
+      for (const [name, text] of m) {
+        const other = db[i]?.get(name);
+        if (text && other !== undefined && !other)
+          result.errors.push(
+            `<SPLITINLINE> #${i + 1}: the ${name} branch is empty but the source has "${text.slice(0, 40)}"; put the translated word inside the branch`
+          );
+      }
+    });
+  }
+  const leak = leakTerms[lang];
+  if (leak) {
+    const count = (root: XNode, re: RegExp) =>
+      (visibleText(root).join(" ").match(re) ?? []).length;
+    const nSrc = count(src.root, leak.src);
+    const nDst = count(dst.root, leak.dst);
+    if (nDst > nSrc)
+      result.errors.push(
+        `"${leak.label}" appears ${nDst}× in target-language text, the source has "procedure"/"routine" ${nSrc}×: a Scheme term leaked out of its <SPLITINLINE> branch`
+      );
   }
 
   // 3. math must be carried over verbatim

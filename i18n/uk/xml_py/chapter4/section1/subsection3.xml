@@ -501,11 +501,10 @@ the_empty_environment
     Мета
     <SPLITINLINE><SCHEME>процедур</SCHEME>
     <PYTHON>функцій</PYTHON></SPLITINLINE>
-    для роботи з фреймами — зробити операції над середовищами
+    для роботи з фреймами — зробити
     <SPLITINLINE><SCHEME>процедури</SCHEME>
     <PYTHON>функції</PYTHON></SPLITINLINE>
-    (маються на увазі процедури/функції роботи з середовищами)
-    легкими для читання.</FOOTNOTE>
+    роботи з середовищами легкими для читання.</FOOTNOTE>
     <SNIPPET PAGE="378" HIDE="yes">
       <NAME>make_frame_example</NAME>
       <PYTHON>
