@@ -7,8 +7,7 @@
 #   Settings > Pages > Build and deployment > Source: "GitHub Actions"
 #   (optional) same page > Custom domain, for your own subdomain
 #   (optional) Settings > Secrets and variables > Actions > Variables:
-#     UK_PUBLISHED_CHAPTERS  chapters 1..N to publish, default 3 (chapters
-#                            4-5 are not translated yet)
+#     UK_PUBLISHED_CHAPTERS  publish only chapters 1..N; unset = the whole book
 name: Deploy Ukrainian edition
 
 on:
@@ -41,7 +40,7 @@ jobs:
     env:
       SICP_EDITION: py
       SICP_LOCALE: uk
-      SICP_PUBLISHED_CHAPTERS: ${{ vars.UK_PUBLISHED_CHAPTERS || '3' }}
+      SICP_PUBLISHED_CHAPTERS: ${{ vars.UK_PUBLISHED_CHAPTERS }}
     steps:
       - uses: actions/checkout@v6
       - name: Use Node.js
@@ -52,7 +51,7 @@ jobs:
       - name: Install TeX Live (with Cyrillic support)
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y texlive texlive-fonts-extra texlive-lang-cyrillic latexmk
+          sudo apt-get install -y texlive texlive-fonts-extra texlive-lang-cyrillic latexmk librsvg2-bin
       - name: Fetch Yarn dependencies
         run: yarn install --frozen-lockfile
       - name: Build
@@ -61,7 +60,13 @@ jobs:
           # xml_py_uk/ = English sources overlaid with the translations in i18n/uk/
           yarn run i18n merge uk
           yarn run split
-          yarn run pdf || (cat latex_pdf_py_uk/sicpy_uk.log && false)
+          # The Python-edition figures exist only as SVG; the PDF build wants
+          # <name>.svg.pdf next to them (scripts/Makefile only lists the
+          # original and JavaScript figures).
+          for f in static/img_python/*.svg; do rsvg-convert -f pdf -o "$f.pdf" "$f"; done
+          # latexmk exits non-zero on any LaTeX error, even when a complete PDF
+          # is produced; the Package step below fails the job if it is missing.
+          yarn run pdf || { echo "::warning::latexmk reported errors"; grep -a '^!' latex_pdf_py_uk/sicpy_uk.log | sort | uniq -c | sort -rn | head -20; }
       - name: Package
         run: |
           set -euxo pipefail

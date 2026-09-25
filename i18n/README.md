@@ -75,7 +75,7 @@ Cyrillic (T2A, `tempora`, babel `ukrainian`) is in `javascript/latexContent.js`.
   and deploys them, with the landing page `i18n/uk/site/index.html`, to this repository's own
   GitHub Pages site. It is independent of upstream's `deploy-pages.yml`, which is skipped on
   forks. Setup: Settings > Pages > Source "GitHub Actions" (plus a custom domain if wanted);
-  the repo variable `UK_PUBLISHED_CHAPTERS` (default 3) limits the published chapters. Not
+  the repo variable `UK_PUBLISHED_CHAPTERS` (unset = the whole book) limits the published chapters. Not
   published: the JSON for the interactive frontend (`json_py_uk/`; ids and links are prefixed
   `/sicpy_uk/`), the Markdown and the programs zip.
 - PDF: running heads other than "Розділ" (contents, foreword, preface, ...) are still
